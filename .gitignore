@@ -1,5 +1,4 @@
-# Ignore node_modules
-node_modules/
+
 
 # Ignore environment files
 .env
@@ -7,3 +6,5 @@ node_modules/
 # Ignore build artifacts
 dist/
 build/
+
+node_modules/
