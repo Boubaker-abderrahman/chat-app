@@ -14,7 +14,7 @@ const MessageInput = () => {
 		e.preventDefault()
 
 		try {
-			const res = await axios.post(`http://localhost:5000/api/messages/send/${selectedConversation._id}`,{message})
+			const res = await axios.post(`https://chat-app-tbd3.onrender.com/api/messages/send/${selectedConversation._id}`,{message})
 			if(!res){throw new Error("Failed Sending message ")}
 			setMessages([...messages , res.data.newMessage])  
 			setMessage('')

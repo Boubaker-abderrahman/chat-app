@@ -22,7 +22,7 @@ const Messages = () => {
 
 	const getMessages = async (receiverId)=>{
         try {
-            const res = await axios.get(`http://localhost:5000/api/messages/${receiverId}`)
+            const res = await axios.get(`https://chat-app-tbd3.onrender.com/api/messages/${receiverId}`)
             if(!res){throw new Error("Error Fetching Message")}
             setMessages(res.data.messages)
         } catch (error) {

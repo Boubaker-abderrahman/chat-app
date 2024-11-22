@@ -11,7 +11,7 @@ const useConversationStore = create((set)=>({
     getConversation : async ()=>{
         set({error : null , isLoading : true})
         try {
-            const res = await axios.get("http://localhost:5000/api/users")
+            const res = await axios.get("https://chat-app-tbd3.onrender.com/api/users")
             set({conversation : res.data.users,error : null , isLoading : false})
         } catch (error) {
             console.log(error)
