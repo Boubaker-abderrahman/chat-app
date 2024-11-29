@@ -14,7 +14,7 @@ const SignUpPage = () => {
   const [email,setEmail] = useState("")
   const [gender,setGender] = useState("")
 
-  const {signup} = useAuthStore()
+  const {signup , error , isLoading} = useAuthStore()
 
   const handelSubmit = async (e)=>{
     e.preventDefault()
@@ -78,12 +78,14 @@ const SignUpPage = () => {
                     />
                     <GenderCheckbox gender={gender} setGender={setGender} />
 
+                    {error && <div className="h-4 py-4 mb-2 text-sm text-red-500 font-bold relative -top-4 "> {error}</div>}
+
                     <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         className='w-full py-3 px-4 bg-gradient-to-r to-cyan-400 from-blue-600  text-white font-bold rounded-lg shadow-lg hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200'
                         type='submit'
-                        //disabled={isLoading}
+                        disabled={isLoading}
                       >
                                   Sign Up
                     </motion.button>

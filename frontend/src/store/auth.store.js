@@ -12,7 +12,7 @@ axios.defaults.withCredentials = true;
     login : async (username,password)=>{
         set({error : null ,  isLoading : true})
         try {
-            const res = await axios.post("https://chat-app-tbd3.onrender.com/api/auth/login",{username,password})
+            const res = await axios.post(`${import.meta.env.VITE_URL_LOCALHOST}/api/auth/login`,{username,password})
             if(!res){
                 set({error : res.data.message ,  isLoading : false})
                 return;}
@@ -28,7 +28,7 @@ axios.defaults.withCredentials = true;
     signup : async (username,password,confirmedPass,fullName,email,gender)=>{
         set({error : null ,  isLoading : true})
         try {
-            const res = await axios.post("https://chat-app-tbd3.onrender.com/api/auth/signup",{username,password,confirmedPass,fullName,email,gender})
+            const res = await axios.post(`${import.meta.env.VITE_URL_LOCALHOST}/api/auth/signup`,{username,password,confirmedPass,fullName,email,gender})
             if(!res){throw new Error("Failed Fetch ")}
             set({user : res.data, error : null ,  isLoading : false,isAuthenticated: true})
 
@@ -41,7 +41,7 @@ axios.defaults.withCredentials = true;
     logout : async ()=>{
         set({error : null ,  isLoading : true})
         try {
-            const res = await axios.post("https://chat-app-tbd3.onrender.com/api/auth/logout")
+            const res = await axios.post(`${import.meta.env.VITE_URL_LOCALHOST}/api/auth/logout`)
             if(!res){throw new Error("Failed Logout ")}
             set({user : null, error : null ,  isLoading : false,isAuthenticated: false})
 
@@ -53,13 +53,14 @@ axios.defaults.withCredentials = true;
     checkauth : async ()=>{
         set({error : null ,  isLoading : true})
         try {
-            const res = await axios.post("https://chat-app-tbd3.onrender.com/api/auth/check-auth")
+            const res = await axios.post(`${import.meta.env.VITE_URL_LOCALHOST}/api/auth/check-auth`)
             if(!res){throw new Error("Failed checking auth ")}
             set({user : res.data, error : null ,  isLoading : false,isAuthenticated: true})
 
         } catch (error) {
             console.log(error.response.data?.message)
-            set({error : error.response.data?.message|| "Internal message in logout -auth.store" ,  isLoading : false})
+            //error : error.response.data?.message|| "Internal message in logout -auth.store" ,
+            set({  isLoading : false})
         }
     },
 
