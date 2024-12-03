@@ -5,6 +5,7 @@ import LoginPage from "./pages/login/LoginPage"
 import SignUpPage from "./pages/signup/SignUpPage"
 import useAuthStore from "./store/auth.store"
 import { useEffect } from "react"
+import { Toaster } from "react-hot-toast"
 
 const RedirectRoute = ({children})=>{
   
@@ -68,6 +69,7 @@ function App() {
 
             </Route>
         </Routes>
+        <Toaster />
       </div>
     </>
   )

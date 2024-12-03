@@ -11,7 +11,9 @@ const useConversationStore = create((set)=>({
     getConversation : async ()=>{
         set({error : null , isLoading : true})
         try {
-            const res = await axios.get(`${import.meta.env.VITE_URL_LOCALHOST}/api/user`)
+            
+            const res = await axios.get(`${import.meta.env.VITE_URL_LOCALHOST}/api/users`)
+            console.log(res)
             set({conversation : res.data.users,error : null , isLoading : false})
         } catch (error) {
             console.log(error)

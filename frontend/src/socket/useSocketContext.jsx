@@ -15,7 +15,7 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (user) {
-      const socket = io(`${import.meta.env.VITE_URL_LOCALHOST}/`, {
+      const socket = io(`https://chat-app-tbd3.onrender.com`, {
         query: {
           userId: user._id,
         },

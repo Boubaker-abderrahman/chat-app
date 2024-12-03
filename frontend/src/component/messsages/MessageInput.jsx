@@ -15,7 +15,7 @@ const MessageInput = () => {
 
     try {
       const res = await axios.post(
-        `${import.meta.env.URL_LOCALHOST}/api/messages/send/${selectedConversation._id}`,
+        `${import.meta.env.VITE_URL_LOCALHOST}/api/messages/send/${selectedConversation._id}`,
         { message }
       );
       if (!res) {

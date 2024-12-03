@@ -13,7 +13,7 @@ function Conversations() {
 	},[getConversation])
   return (
     <div className='py-2 flex flex-col overflow-auto'>
-			{conversation.map((conversation)=>{
+			{conversation?.map((conversation)=>{
 				return <Conversation key={conversation._id} conversation={conversation} emoji={getRandomEmoji()} />
 
 			})}

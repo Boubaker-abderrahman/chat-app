@@ -14,13 +14,13 @@ axios.defaults.withCredentials = true;
         try {
             const res = await axios.post(`${import.meta.env.VITE_URL_LOCALHOST}/api/auth/login`,{username,password})
             if(!res){
-                set({error : res.data.message ,  isLoading : false})
+                set({error : res?.data?.message ,  isLoading : false})
                 return;}
-            set({user : res.data.user, error : null ,  isLoading : false,isAuthenticated: true})
+            set({user : res?.data?.user, error : null ,  isLoading : false,isAuthenticated: true})
 
         } catch (error) {
-            console.log(error.response.data?.message )
-            set({error : error.response.data?.message || "Internal message in login -auth.store" ,  isLoading : false})
+            console.log(error?.response?.data?.message )
+            set({error : error?.response?.data?.message || "Internal message in login -auth.store" ,  isLoading : false})
             
         }
     },
@@ -30,11 +30,11 @@ axios.defaults.withCredentials = true;
         try {
             const res = await axios.post(`${import.meta.env.VITE_URL_LOCALHOST}/api/auth/signup`,{username,password,confirmedPass,fullName,email,gender})
             if(!res){throw new Error("Failed Fetch ")}
-            set({user : res.data, error : null ,  isLoading : false,isAuthenticated: true})
+            set({user : res?.data, error : null ,  isLoading : false,isAuthenticated: true})
 
         } catch (error) {
-            console.log(error.response.data?.error || "Error In signIn")
-            set({error : error.response.data?.error || "Internal message in sigup -auth.store" ,  isLoading : false})
+            console.log(error?.response?.data?.error || "Error In signIn")
+            set({error : error?.response?.data?.error || "Internal message in sigup -auth.store" ,  isLoading : false})
         }
     },
 
@@ -46,8 +46,8 @@ axios.defaults.withCredentials = true;
             set({user : null, error : null ,  isLoading : false,isAuthenticated: false})
 
         } catch (error) {
-            console.log(error.response.data?.message)
-            set({error : error.response.data?.message|| "Internal message in logout -auth.store" ,  isLoading : false})
+            console.log(error?.response?.data?.message)
+            set({error : error?.response?.data?.message|| "Internal message in logout -auth.store" ,  isLoading : false})
         }
     },
     checkauth : async ()=>{
@@ -55,10 +55,10 @@ axios.defaults.withCredentials = true;
         try {
             const res = await axios.post(`${import.meta.env.VITE_URL_LOCALHOST}/api/auth/check-auth`)
             if(!res){throw new Error("Failed checking auth ")}
-            set({user : res.data, error : null ,  isLoading : false,isAuthenticated: true})
+            set({user : res?.data, error : null ,  isLoading : false,isAuthenticated: true})
 
         } catch (error) {
-            console.log(error.response.data?.message)
+            console.log(error?.response?.data?.message)
             //error : error.response.data?.message|| "Internal message in logout -auth.store" ,
             set({  isLoading : false})
         }

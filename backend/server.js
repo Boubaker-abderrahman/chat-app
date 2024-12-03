@@ -4,7 +4,6 @@ import dotenv from 'dotenv'
 import messageRoute from './Routes/message.route.js'
 import userRoute from './Routes/user.route.js'
 import cookieParser from 'cookie-parser'
-import cors from 'cors'
 import { app, server } from './socket/socket.js'
 import express from "express";
 import path  from 'path';
@@ -16,8 +15,6 @@ dotenv.config()
 
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors())
-
 
 
 app.use('/api/auth' , authRouter)
@@ -33,4 +30,6 @@ app.get("*" , (req,res)=>{
 server.listen(PORT, ()=>{
     connectDb()
     console.log('listening on port ',PORT)
+    console.log(process.env.CLIENT_URL)
+
 } )
